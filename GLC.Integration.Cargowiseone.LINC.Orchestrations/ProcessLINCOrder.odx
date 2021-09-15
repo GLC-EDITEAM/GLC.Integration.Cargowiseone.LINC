@@ -1,0 +1,238 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData">
+    <om:Element Type="Module" OID="0c5a1130-5352-41cf-bc09-1004f387f5e0" LowerBound="1.1" HigherBound="49.1">
+        <om:Property Name="ReportToAnalyst" Value="True" />
+        <om:Property Name="Name" Value="GLC.Integration.Cargowiseone.LINC.Orchestrations" />
+        <om:Property Name="Signal" Value="False" />
+        <om:Element Type="PortType" OID="bb64db29-99f1-41fd-8c92-fe9f2f64d32f" ParentLink="Module_PortType" LowerBound="4.1" HigherBound="11.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="ReceiveLINCPorttype" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="b3b0475f-a744-488d-86b1-d64b2ad67e1f" ParentLink="PortType_OperationDeclaration" LowerBound="6.1" HigherBound="10.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="4f03cbd6-0bbb-4c6c-baf8-a0cec2ee7edf" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.63">
+                    <om:Property Name="Ref" Value="GLC.Integration.Cargowiseone.LINC.Schemas.LincFLAT" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="ebdbd16a-bd9f-4289-b245-df6c699e2cde" ParentLink="Module_PortType" LowerBound="11.1" HigherBound="18.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="SendInterchangeLINC" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="a99d6f87-a29b-4cb0-9df0-294085e4cf70" ParentLink="PortType_OperationDeclaration" LowerBound="13.1" HigherBound="17.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="e0acce9a-02c3-4aa0-b56a-d41b87bcd74b" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="15.13" HigherBound="15.83">
+                    <om:Property Name="Ref" Value="GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalInterchange" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="ServiceDeclaration" OID="e1e2bd95-6e72-4f40-a4de-358b2d40428b" ParentLink="Module_ServiceDeclaration" LowerBound="18.1" HigherBound="48.1">
+            <om:Property Name="InitializedTransactionType" Value="False" />
+            <om:Property Name="IsInvokable" Value="False" />
+            <om:Property Name="TypeModifier" Value="Public" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="ProcessLINCOrder" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="ServiceBody" OID="9da0b353-833a-4fc0-a565-6ae7a4d6107a" ParentLink="ServiceDeclaration_ServiceBody">
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="Receive" OID="aea13352-d94d-4328-863a-fe31db899dba" ParentLink="ServiceBody_Statement" LowerBound="30.1" HigherBound="32.1">
+                    <om:Property Name="Activate" Value="True" />
+                    <om:Property Name="PortName" Value="ReceiveLINCCSV" />
+                    <om:Property Name="MessageName" Value="msgLINCCSV" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Receive_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="Construct" OID="27217f35-4342-4c35-aa50-1822112c1ac3" ParentLink="ServiceBody_Statement" LowerBound="32.1" HigherBound="38.1">
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="ConstructMessage_1" />
+                    <om:Property Name="Signal" Value="True" />
+                    <om:Element Type="Transform" OID="fbf38a30-c329-4ce6-b769-34e99548ad57" ParentLink="ComplexStatement_Statement" LowerBound="35.1" HigherBound="37.1">
+                        <om:Property Name="ClassName" Value="GLC.Integration.Cargowiseone.LINC.Schemas.TransformLINCoShipment" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Transform_1" />
+                        <om:Property Name="Signal" Value="True" />
+                        <om:Element Type="MessagePartRef" OID="fa2fd434-9711-48a1-a666-f5c19a64d5e4" ParentLink="Transform_InputMessagePartRef" LowerBound="36.109" HigherBound="36.119">
+                            <om:Property Name="MessageRef" Value="msgLINCCSV" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_1" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                        <om:Element Type="MessagePartRef" OID="612e0d74-32f5-4506-9551-a923b60caea3" ParentLink="Transform_OutputMessagePartRef" LowerBound="36.28" HigherBound="36.39">
+                            <om:Property Name="MessageRef" Value="msgShipment" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_2" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                    </om:Element>
+                    <om:Element Type="MessageRef" OID="68189eb1-318e-43bf-95b7-683e8bc6a463" ParentLink="Construct_MessageRef" LowerBound="33.23" HigherBound="33.34">
+                        <om:Property Name="Ref" Value="msgShipment" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Construct" OID="55f32702-9bb0-4196-87a3-a4f0f2be33cb" ParentLink="ServiceBody_Statement" LowerBound="38.1" HigherBound="44.1">
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="ConstructMessage_2" />
+                    <om:Property Name="Signal" Value="False" />
+                    <om:Element Type="Transform" OID="b1ff1fc7-3c0e-49c2-822b-5c1abfb5334e" ParentLink="ComplexStatement_Statement" LowerBound="41.1" HigherBound="43.1">
+                        <om:Property Name="ClassName" Value="GLC.Integration.Cargowiseone.LINC.Schemas.TransformShipmentToInterchange" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Transform_2" />
+                        <om:Property Name="Signal" Value="True" />
+                        <om:Element Type="MessagePartRef" OID="d91a3b1d-2959-4a77-86e4-4befe9aa4aa9" ParentLink="Transform_InputMessagePartRef" LowerBound="42.120" HigherBound="42.131">
+                            <om:Property Name="MessageRef" Value="msgShipment" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_3" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                        <om:Element Type="MessagePartRef" OID="8868bb70-0df7-4983-8180-d8e9c2c39c46" ParentLink="Transform_OutputMessagePartRef" LowerBound="42.28" HigherBound="42.42">
+                            <om:Property Name="MessageRef" Value="msgInterchange" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_4" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                    </om:Element>
+                    <om:Element Type="MessageRef" OID="bb4eed22-8b84-43e1-9ba5-9973fdf6ded6" ParentLink="Construct_MessageRef" LowerBound="39.23" HigherBound="39.37">
+                        <om:Property Name="Ref" Value="msgInterchange" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Send" OID="16d30708-49f5-4611-ab56-d9af55f523f5" ParentLink="ServiceBody_Statement" LowerBound="44.1" HigherBound="46.1">
+                    <om:Property Name="PortName" Value="SendInterchange" />
+                    <om:Property Name="MessageName" Value="msgInterchange" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Send_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="c17a7b71-f8fb-4eb6-bc09-ca3bbdc06a11" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="21.1" HigherBound="23.1">
+                <om:Property Name="PortModifier" Value="Implements" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="GLC.Integration.Cargowiseone.LINC.Orchestrations.ReceiveLINCPorttype" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="ReceiveLINCCSV" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="LogicalBindingAttribute" OID="bd06a22e-ce15-4136-844f-28b3bf4ec5bc" ParentLink="PortDeclaration_CLRAttribute" LowerBound="21.1" HigherBound="22.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="34e79901-cdd7-4e15-949f-691a8989689b" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="23.1" HigherBound="25.1">
+                <om:Property Name="PortModifier" Value="Uses" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="19" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="GLC.Integration.Cargowiseone.LINC.Orchestrations.SendInterchangeLINC" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="SendInterchange" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="DirectBindingAttribute" OID="6646846a-0283-4d1c-8a24-9472bdead17a" ParentLink="PortDeclaration_CLRAttribute" LowerBound="23.1" HigherBound="24.1">
+                    <om:Property Name="DirectBindingType" Value="MessageBox" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="2c7840b2-5c5b-4f0b-b367-91d2881a3515" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="25.1" HigherBound="26.1">
+                <om:Property Name="Type" Value="GLC.Integration.Cargowiseone.LINC.Schemas.LincFLAT" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="msgLINCCSV" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="f6d40104-0b31-46dd-bf67-b707512d8aa6" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="26.1" HigherBound="27.1">
+                <om:Property Name="Type" Value="GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalShipment" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="msgShipment" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="0f8015a8-f832-48f3-837d-c3eab7f63186" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="27.1" HigherBound="28.1">
+                <om:Property Name="Type" Value="GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalInterchange" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="msgInterchange" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+        </om:Element>
+    </om:Element>
+</om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+module GLC.Integration.Cargowiseone.LINC.Orchestrations
+{
+    internal porttype ReceiveLINCPorttype
+    {
+        oneway Operation_1
+        {
+            GLC.Integration.Cargowiseone.LINC.Schemas.LincFLAT
+        };
+    };
+    internal porttype SendInterchangeLINC
+    {
+        oneway Operation_1
+        {
+            GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalInterchange
+        };
+    };
+    [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+    public service ProcessLINCOrder
+    {
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port implements ReceiveLINCPorttype ReceiveLINCCSV;
+        [Microsoft.XLANGs.BaseTypes.DirectBinding()]
+        port uses SendInterchangeLINC SendInterchange;
+        message GLC.Integration.Cargowiseone.LINC.Schemas.LincFLAT msgLINCCSV;
+        message GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalShipment msgShipment;
+        message GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalInterchange msgInterchange;
+        body ()
+        {
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("aea13352-d94d-4328-863a-fe31db899dba")]
+            activate receive (ReceiveLINCCSV.Operation_1, msgLINCCSV);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("27217f35-4342-4c35-aa50-1822112c1ac3")]
+            construct msgShipment
+            {
+                [Microsoft.XLANGs.BaseTypes.DesignerPosition("fbf38a30-c329-4ce6-b769-34e99548ad57")]
+                transform (msgShipment) = GLC.Integration.Cargowiseone.LINC.Schemas.TransformLINCoShipment (msgLINCCSV);
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("55f32702-9bb0-4196-87a3-a4f0f2be33cb")]
+            construct msgInterchange
+            {
+                [Microsoft.XLANGs.BaseTypes.DesignerPosition("b1ff1fc7-3c0e-49c2-822b-5c1abfb5334e")]
+                transform (msgInterchange) = GLC.Integration.Cargowiseone.LINC.Schemas.TransformShipmentToInterchange (msgShipment);
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("16d30708-49f5-4611-ab56-d9af55f523f5")]
+            send (SendInterchange.Operation_1, msgInterchange);
+        }
+    }
+}
+
